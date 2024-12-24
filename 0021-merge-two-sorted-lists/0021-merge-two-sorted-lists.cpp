@@ -28,50 +28,62 @@ public:
         while (l1 != nullptr || l2 != nullptr) {
             if (l1 != nullptr && l2 != nullptr) {
                 if (l1->val < l2->val) {
+                    ListNode* next = nullptr;
                     if (result == nullptr) {
-                        ListNode* im = new ListNode(l1->val);
-                        result = im;
+                        next = l1->next;
+                        l1->next = nullptr;
+                        result = l1;
                         currentPos = result;
                     } else {
-                        ListNode* im = new ListNode(l1->val);
-                        (*currentPos).next = im;
-                        currentPos = im;
+                        next = l1->next;
+                        l1->next = nullptr;
+                        (*currentPos).next = l1;
+                        currentPos = l1;
                     }
-                    l1 = l1->next;
+                    l1 = next;
                 } else {
+                    ListNode* next = nullptr;
                     if (result == nullptr) {
-                        ListNode* im = new ListNode(l2->val);
-                        result = im;
+                        next = l2->next;
+                        l2->next = nullptr;
+                        result = l2;
                         currentPos = result;
                     } else {
-                        ListNode* im = new ListNode(l2->val);
-                        (*currentPos).next = im;
-                        currentPos = im;
+                        next = l2->next;
+                        l2->next = nullptr;
+                        (*currentPos).next = l2;
+                        currentPos = l2;
                     }
-                    l2 = l2->next;
+                    l2 = next;
                 }
             } else if (l1 != nullptr) {
-                if (result == nullptr) {
-                    ListNode* im = new ListNode(l1->val);
-                    result = im;
-                    currentPos = result;
-                } else {
-                    ListNode* im = new ListNode(l1->val);
-                    (*currentPos).next = im;
-                    currentPos = im;
-                }
-                l1 = l1->next;
+                ListNode* next = nullptr;
+                    if (result == nullptr) {
+                        next = l1->next;
+                        l1->next = nullptr;
+                        result = l1;
+                        currentPos = result;
+                    } else {
+                        next = l1->next;
+                        l1->next = nullptr;
+                        (*currentPos).next = l1;
+                        currentPos = l1;
+                    }
+                    l1 = next;
             } else if (l2 != nullptr) {
-                if (result == nullptr) {
-                    ListNode* im = new ListNode(l2->val);
-                    result = im;
-                    currentPos = result;
-                } else {
-                    ListNode* im = new ListNode(l2->val);
-                    (*currentPos).next = im;
-                    currentPos = im;
-                }
-                l2 = l2->next;
+                ListNode* next = nullptr;
+                    if (result == nullptr) {
+                        next = l2->next;
+                        l2->next = nullptr;
+                        result = l2;
+                        currentPos = result;
+                    } else {
+                        next = l2->next;
+                        l2->next = nullptr;
+                        (*currentPos).next = l2;
+                        currentPos = l2;
+                    }
+                    l2 = next;
             }
         }
 
